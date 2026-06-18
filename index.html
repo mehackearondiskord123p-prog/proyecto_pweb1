@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficador 2D UNO</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800 font-sans">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="mb-8 text-center md:text-left">
+            <h1 class="text-3xl font-bold text-indigo-600">Estudio y gráfico de funciones</h1>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm flex flex-col justify-between h-fit gap-6 border border-gray-100">
+                <div>
+                    <h2 class="text-xl font-semibold mb-4 text-gray-700">Configuración</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-600 mb-2" for="funcion">Función f(x)</label>
+                        <input type="text" id="funcion"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none font-mono"
+                            placeholder="Ej: x^2 - 4x + 3">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">X Mínimo</label>
+                            <input type="number" id="xMin" value="-10" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg font-mono">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">X Máximo</label>
+                            <input type="number" id="xMax" value="10" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg font-mono">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btnGraficar" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg shadow transition duration-200 cursor-pointer">
+                    Graficar Función
+                </button>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm h-[400px] md:h-[500px] flex items-center justify-center relative border border-gray-100">
+                <canvas id="graficoCanvas"></canvas>
+            </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-red-500 mb-3 flex items-center gap-2">
+                    <span></span> Asíntotas
+                </h3>
+                <div id="asintotasResult" class="text-sm text-gray-600 space-y-2">
+                    </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-green-600 mb-3 flex items-center gap-2">
+                    <span></span> Máximos y Mínimos LOCALES
+                </h3>
+                <div id="extremosResult" class="text-sm text-gray-600 space-y-2">
+                    </div>
+            </div>
+        </div>
+    </div>

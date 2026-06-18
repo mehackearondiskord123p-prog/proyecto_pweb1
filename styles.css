@@ -1,0 +1,21 @@
+/* Animación sutil para la aparición de los resultados */
+#asintotasResult p, #extremosResult p {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Forzar que el canvas use el espacio máximo sin romper el contenedor de Chart.js */
+#graficoCanvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
